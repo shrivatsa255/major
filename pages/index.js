@@ -1,5 +1,4 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import styles from '../styles/Home.module.css'
 import {useTheme} from 'next-themes'
 import { useEffect,useRef,useContext,useState } from 'react'
@@ -86,6 +85,7 @@ useEffect(() => {
         name='Verify'
         link={true}
         linkTo='/verify-product'
+        image='/verify.png'
        />
        {
   !hideButtons && (

@@ -7,6 +7,7 @@ const InfoCard = ({
   name,
   link,
   linkTo,
+  contract,
   image,
   classStyles,
 }) => {
@@ -20,17 +21,18 @@ const InfoCard = ({
 
         {link && (
           <div className="flexCenter flex flex-col">
-            <div className="relative flexCenter mt-5 sm:h-36 sm:w-none xs:h-35 minmd:h-60 minlg:h-300 h-100 w-100 rounded-xl overflow-hidden">
+            <div className="relative flexCenter mt-6 sm:h-36 sm:w-none xs:h-35 minmd:h-60 minlg:h-300 h-100 w-100 rounded-xl overflow-hidden">
               <Image
                 src={image}
-                layout="fill"
+                width={241}
+                height={230}
                 objectFit="cover"
                 alt="image"
               />
             </div>
             <Button
               btnName={name}
-              classStyles="rounded-2xl p-8 mt-6"
+              classStyles="rounded-2xl p-8 mt-7"
               handleClick={() => router.push(linkTo)}
             />
           </div>

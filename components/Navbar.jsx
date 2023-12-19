@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ValContext } from '../Context/ValContext';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import  {Button} from "../components"
 
