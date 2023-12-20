@@ -115,13 +115,13 @@ const CreateContract = () => {
                 classStyles="rounded-2xl p-8 mt-7"
                 handleClick={createContract}
               />
-
+            <div className={loading && "hidden"}>
               {loading ? (
                 <InfoCard warning="Transaction is being executing" />
                 ) : (
               <InfoCard content={updateStatus} warning={contractAddress} />
                )}
-
+            </div>
             </div>
           </div>
         </div>

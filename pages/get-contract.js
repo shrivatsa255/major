@@ -1,29 +1,33 @@
-import {useState} from "react";
+import { useState } from "react";
 import { InfoCard, Input, Button } from "../components";
 import Web3Modal from "web3modal";
 import { ValidifyAddress, ValidifyAddressesABI } from "../Context/constents";
 import { ethers } from "ethers";
-
 
 const getContract = () => {
   const [contractAddress, setContractAddress] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
 
   const fetchContract = (signerOrProvider) =>
-  new ethers.Contract(ValidifyAddress, ValidifyAddressesABI, signerOrProvider);
-
+    new ethers.Contract(
+      ValidifyAddress,
+      ValidifyAddressesABI,
+      signerOrProvider
+    );
 
   const fetchContractAddress = async () => {
     try {
       const web3modal = new Web3Modal();
-const connection = await web3modal.connect();
-const provider = new ethers.providers.Web3Provider(connection);
-const signer = provider.getSigner();
+      const connection = await web3modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
 
-const contract = fetchContract(signer);
+      const contract = fetchContract(signer);
 
       if (walletAddress) {
-        const address = await contract.getCompanySmartContractAddress(walletAddress);
+        const address = await contract.getCompanySmartContractAddress(
+          walletAddress
+        );
         setContractAddress(address);
       } else {
         alert("Enter wallet address");
@@ -59,14 +63,15 @@ const contract = fetchContract(signer);
                 btnName="Fetch Address"
                 classStyles="rounded-xl"
                 handleClick={fetchContractAddress}
-              />        
+              />
             </div>
-            {
-  contractAddress && (
-    <InfoCard content="Contract Address" warning={contractAddress} />
-  )
-}
-
+            <div>
+            {contractAddress ? (
+              <InfoCard content="Contract Address" warning={contractAddress} />
+            ) : (
+              <InfoCard warning="Enter a Valid wallet address" />
+            )}
+          </div>
           </div>
         </div>
       </div>
