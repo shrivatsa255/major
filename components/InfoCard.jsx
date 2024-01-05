@@ -7,7 +7,6 @@ const InfoCard = ({
   name,
   link,
   linkTo,
-  contract,
   image,
   classStyles,
 }) => {
@@ -21,7 +20,7 @@ const InfoCard = ({
 
         {link && (
           <div className="flexCenter flex flex-col">
-            <div className="relative flexCenter mt-6 sm:h-36 sm:w-none xs:h-35 minmd:h-60 minlg:h-300 h-100 w-100 rounded-xl overflow-hidden">
+            <div className="relative flexCenter mt-6 sm:h-17 sm:w-none xs:h-35 minmd:h-60 minlg:h-300 h-100 w-100 rounded-md overflow-hidden">
               <Image
                 src={image}
                 width={241}

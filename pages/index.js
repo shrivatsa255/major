@@ -14,7 +14,7 @@ const { theme } = useTheme();
 
   const handelScroll = (direction) => {
   const { current } = scrollRef;
-  const scrollCount = window.innerWidth > 1800 ? 270 : 210;
+  const scrollCount = window.innerWidth > 1800 ? 270 : 300;
   if (direction === "left") {
     current.scrollLeft -= scrollCount;
   } else {
@@ -42,7 +42,7 @@ useEffect(() => {
   return (
     <div className="flex justify-center sm:px-4 p-12">
     <div className="w-full minmd:w-4/5">
-    <Banner parentStyles="justify-start mb-6 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-2xl" childStyles="md:text-4xl sm:text-2xl xs:text-xl text-left" name="Buy Verify " />
+    <Banner parentStyles="justify-start mb-6 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-2xl" childStyles="md:text-4xl sm:text-2xl xs:text-xl text-left" name="Validify a Blockchain Solutions for Transparent Product Verification"/>
     <InfoCard
       content='VALIDIFY is a platform where Companies can register to receive a customized smart contract, which will serve
             as a registry of all products produced by the company.
