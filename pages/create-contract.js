@@ -92,20 +92,20 @@ const CreateContract = () => {
             </div>
             <div className="mt-10 sm:mt-3 flex flex-col">
               <div className="w-full border-b border-nft-black-1 dark:border-nft-gray-1 flex flex-row"></div>
-              <div className="mt-3">
+              <div className="mt-3  break-all sm:text-wrap tracking-wide">
                 <p className="font-poppins dark:text-white text-nft-black-1 text-base text-pretty font-normal">
                   In this innovative project, companies are empowered with a
                   groundbreaking feature that allows them to effortlessly create
-                  their own smart contracts with a simple click of a button.
-                  This functionality represents a significant leap forward in
+                  their own smart contracts with a simple click of a button.<br />
+                  This functionality represents a significant leap forward in 
                   blockchain technology accessibility, as it streamlines and
-                  democratizes the smart contract creation process.
+                  democratizes the smart contract creation process.<br/>
                   Traditionally, the development and deployment of smart
                   contracts have been intricate tasks, often requiring
                   specialized knowledge and coding expertise. However, by
                   integrating a user-friendly interface into the platform,
                   companies can now initiate the creation of their custom smart
-                  contracts seamlessly. This feature not only enhances the
+                  contracts seamlessly.<br/>This feature not only enhances the
                   efficiency of blockchain adoption but also democratizes the
                   utilization of smart contracts, enabling a broader range of
                   businesses to harness the benefits of decentralized and

@@ -14,7 +14,7 @@ const InfoCard = ({
   return (
     <div className="flex-1 min-w-215  max-w-max xs:max-w-none sm:w-full sm:min-w-155 minmd:min-w-256 minlg:min-w-327 dark:bg-nft-black-3 bg-indigo-100 rounded-2xl m-4 ml-0 minlg:m-8 sm:my-2  cursor-pointer shadow-md p-10">
       <div className="relative w-full h-full sm:h-50 xs:h-66 minmd:h-60 minlg:h-300 overflow-hidden">
-        <h1 className="font-poppins font-semibold dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-sm xs:text-xs">
+        <h1 className="font-poppins font-semibold break-all dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-md">
           {content}
         </h1>
 
@@ -38,7 +38,7 @@ const InfoCard = ({
         )}
       </div>
       <h2
-        className={`${classStyles} mt-5font-poppins font-bold text-red-500 sm:text-sm minlg:text-xl`}
+        className={`${classStyles} mt-5 font-poppins font-bold text-red-500 sm:text-sm minlg:text-xl`}
       >
         {warning}
       </h2>

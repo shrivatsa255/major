@@ -151,7 +151,7 @@ const addProduct = () => {
               )}
             </div>
             <div className="flex-col dark:bg-nft-black-3 p-5 bg-indigo-100 rounded-2xl">
-              <div ref={qrRef} className="flexCenter">{qrcode}</div>
+              <div ref={qrRef} className="sm:flexCenter">{qrcode}</div>
                   <Input
                     type="text"
                     value={companyContractAddress}
