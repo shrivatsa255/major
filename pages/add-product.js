@@ -42,6 +42,7 @@ const addProduct = () => {
       size={300}
       bgColor={"#ffffff"}
       level={"H"}
+      includeMargin={true}
     />
   );
   const fetchContract = (signerOrProvider) =>

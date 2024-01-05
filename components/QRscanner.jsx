@@ -25,6 +25,7 @@ const QRScanner = () => {
       "reader",
       config,
       /* verbose= */ false
+    
     );
     html5QrcodeScanner.render(onScanSuccess);
   }, []);
