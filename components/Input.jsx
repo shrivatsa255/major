@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 const Input = ({ inputType, title, placeholder, handleClick,value,ref }) => {
 
   return (
-    <div className="mt-10 w-full min-w-215">
+    <div className="mt-5 w-full min-w-215">
       <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
         {title}
       </p>

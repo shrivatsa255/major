@@ -72,8 +72,9 @@ const CreateContract = () => {
     <div className="flex-1 sm:px-4">
       <div className="md:w-full">
         <div className="relative flex justify-center md:flex-col min-h-screen overflow-hidden">
-          <div className="relative flex-1 flexCenter sm:px-4 p-12 border-r md:border-r-0 md:border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1">
-            <div className="relative w-557 minmd:w-2/3 minmd:h-2/3 sm:w-full sm:h-300 h-557">
+          <div className="relative flex-1 flexCenter sm:px-4 p-12 sm:pt-5 border-r md:border-r-0 md:border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1">
+            <div className="relative w-557 minmd:w-2/3 minmd:h-2/3  sm:w-full sm:h-300 h-557">
+            <h2 className="hidden sm:flex sm:mb-4 font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl  minlg:text-3xl">Create Contract</h2>
               <Image
                 src="/contract.png"
                 objectFit="cover"
@@ -83,16 +84,16 @@ const CreateContract = () => {
               />
             </div>
           </div>
-          <div className="flex-1 justify-start sm:px-4  p-12 sm:pb-4">
+          <div className="flex-1 justify-start sm:p-4  p-12 sm:pb-4">
             <div className="flex flex-row sm:flex-col">
               <h2 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl minlg:text-3xl">
                 Description
               </h2>
             </div>
-            <div className="mt-10 flex flex-col">
+            <div className="mt-10 sm:mt-3 flex flex-col">
               <div className="w-full border-b border-nft-black-1 dark:border-nft-gray-1 flex flex-row"></div>
               <div className="mt-3">
-                <p className="font-poppins dark:text-white text-nft-black-1 text-base  font-normal">
+                <p className="font-poppins dark:text-white text-nft-black-1 text-base text-pretty font-normal">
                   In this innovative project, companies are empowered with a
                   groundbreaking feature that allows them to effortlessly create
                   their own smart contracts with a simple click of a button.

@@ -52,13 +52,13 @@ const getContract = () => {
             warning="Fetch the Company specific Contract Address by providing the Company specific Metamask Wallet Address in the below area"
             classStyles="text-md"
           />
-          <div className="ml-4">
+          <div className="ml-4 sm:ml-0">
             <Input
               title="Fetch Address"
               placeholder="Enter the company wallet address"
               handleClick={(e) => setWalletAddress(e.target.value)}
             />
-            <div className="mt-8 flex justify-end">
+            <div className="mt-8 sm:my-4 flex sm:justify-end">
               <Button
                 btnName="Fetch Address"
                 classStyles="rounded-xl"
@@ -69,7 +69,7 @@ const getContract = () => {
             {contractAddress ? (
               <InfoCard content="Contract Address" warning={contractAddress} />
             ) : (
-              <InfoCard warning="Enter a Valid wallet address" />
+              <InfoCard warning="Enter a Valid wallet address" classStyles="sm:mt-0" />
             )}
           </div>
           </div>

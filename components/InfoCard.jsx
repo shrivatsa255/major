@@ -38,7 +38,7 @@ const InfoCard = ({
         )}
       </div>
       <h2
-        className={`${classStyles} mt-5 font-poppins font-bold text-red-500 sm:text-xs minlg:text-xl`}
+        className={`${classStyles} mt-5font-poppins font-bold text-red-500 sm:text-sm minlg:text-xl`}
       >
         {warning}
       </h2>

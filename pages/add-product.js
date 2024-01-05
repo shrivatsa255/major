@@ -104,7 +104,7 @@ const addProduct = () => {
             warning="Add a product to the SMART-CONTRACT by providing the details of the company contract address and the product details"
             classStyles="text-md"
           />
-          <div className="ml-4">
+          <div className="ml-4 sm:ml-0">
             <Input
               title="Contract Address"
               placeholder="Enter the company contract address"
@@ -150,8 +150,8 @@ const addProduct = () => {
                 <InfoCard warning="Connect to MetaMask Wallet" />
               )}
             </div>
-            <div className="flex-col dark:bg-nft-black-3 p-10 bg-indigo-100 rounded-2xl">
-              <div ref={qrRef}>{qrcode}</div>
+            <div className="flex-col dark:bg-nft-black-3 p-5 bg-indigo-100 rounded-2xl">
+              <div ref={qrRef} className="flexCenter">{qrcode}</div>
                   <Input
                     type="text"
                     value={companyContractAddress}
@@ -160,7 +160,7 @@ const addProduct = () => {
                   />
                   <Button 
                     btnName="Download QR Code"
-                    classStyles="rounded-xl mt-7"
+                    classStyles="rounded-xl mt-5"
                     disabled={!companyContractAddress}
                     handleClick={downloadQRCode}
                   />
