@@ -91,7 +91,9 @@ const verifyProduct = () => {
             </div>
           </div>
           <div className="mt-7 ml-1">
-            <p className="font-poppins font-semibold dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-sm">Scan your QR through camera</p>
+            <p className="font-poppins font-semibold dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-sm">
+              Scan your QR through camera
+            </p>
           </div>
           <div className="sm:w-full md:w-4/5  dark:bg-nft-black-3  bg-indigo-100 rounded-2xl  ml-0 minlg:m-8 mt-5 cursor-pointer shadow-md p-10 lg:w-1/2">
             <div className="font-poppins font-semibold dark:text-white text-nft-black-1 text-sm minlg:text-xl sm:text-sm xs:text-xs">
