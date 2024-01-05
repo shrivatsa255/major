@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import QrScanner from "qr-scanner";
 
-import { InfoCard, Input, Button } from "../components";
+import { InfoCard, Input, Button, QRscanner } from "../components";
 import Web3Modal from "web3modal";
 import { ValidifyAddress, ValidifyAddressesABI } from "../Context/constents";
 import { ethers } from "ethers";
@@ -30,7 +30,7 @@ const verifyProduct = () => {
 
       const result = await contract.checkProduct(
         companyContractAddress,
-        parseInt(productId)
+        parseInt(productId, 36)
       );
       setProductStatus(result);
     } catch (error) {
@@ -40,6 +40,7 @@ const verifyProduct = () => {
 
   const [file, setFile] = useState(null);
   const [data, setData] = useState(null);
+
   const fileRef = useRef();
 
   const scanQR = async (e) => {
@@ -48,6 +49,7 @@ const verifyProduct = () => {
     const result = await QrScanner.scanImage(file);
     setData(result);
   };
+  console.log(productId);
 
   return (
     <div className="flex-1 sm:px-4 p-12">
@@ -66,7 +68,7 @@ const verifyProduct = () => {
           />
           <div className="ml-1 mt-7">
             <p className="font-poppins font-semibold dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-sm xs:text-xs">
-              Scan Your QR code
+              Scan Your QR code image
             </p>
             <div className="flex-col dark:bg-nft-black-1 p-10 mt-7 bg-indigo-100 rounded-2xl">
               <input
@@ -86,6 +88,14 @@ const verifyProduct = () => {
                   handleClick={() => fileRef.current.click()}
                 />
               </div>
+            </div>
+          </div>
+          <div className="mt-7 ml-1">
+            <p className="font-poppins font-semibold dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-sm xs:text-xs">Scan your QR through camera</p>
+          </div>
+          <div className="sm:w-full md:w-4/5  dark:bg-nft-black-3  bg-indigo-100 rounded-2xl  ml-0 minlg:m-8 sm:my-2 sm:mx-2 cursor-pointer shadow-md p-10 lg:w-1/2">
+            <div className="font-poppins font-semibold dark:text-white text-nft-black-1 text- sm minlg:text-xl sm:text-sm xs:text-xs">
+              <QRscanner />
             </div>
           </div>
           <div className="ml-4">

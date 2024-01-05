@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Button, InfoCard } from "../components";
 import { ethers } from "ethers";
-import Image from "next/legacy/image"
+import Image from "next/legacy/image";
 import { ValContext } from "../Context/ValContext";
 import Web3Modal from "web3modal";
 import { ValidifyAddress, ValidifyAddressesABI } from "../Context/constents";
@@ -11,6 +11,7 @@ const CreateContract = () => {
   const [contractAddress, setContractAddress] = useState(null);
   const [loading, setLoading] = useState(false);
   const [updateStatus, setUpdateStatus] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const fetchContract = (signerOrProvider) =>
     new ethers.Contract(
@@ -113,15 +114,17 @@ const CreateContract = () => {
               <Button
                 btnName="Create Contract"
                 classStyles="rounded-2xl p-8 mt-7"
-                handleClick={createContract}
+                handleClick={() => {
+                  setModal(true);
+                  createContract();
+                }}
               />
-            <div className={loading && "hidden"}>
-              {loading ? (
-                <InfoCard warning="Transaction is being executing" />
+              {modal &&
+                (loading ? (
+                  <InfoCard warning="Transaction is being executing" />
                 ) : (
-              <InfoCard content={updateStatus} warning={contractAddress} />
-               )}
-            </div>
+                  <InfoCard content={updateStatus} warning={contractAddress} />
+                ))}
             </div>
           </div>
         </div>

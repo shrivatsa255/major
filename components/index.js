@@ -4,6 +4,6 @@ import Banner from './Banner';
 import Footer from './Footer';
 import InfoCard from './InfoCard';
 import Input from './Input';
-import Create from './Create';
+import QRscanner from './QRscanner';
 
-export { Navbar, Button, Banner, Footer, InfoCard, Input, Create };
+export { Navbar, Button, Banner, Footer, InfoCard, Input, QRscanner};

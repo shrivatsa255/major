@@ -19,6 +19,7 @@ const addProduct = () => {
   const [updateStatus, setUpdateStatus] = useState(false);
 
   const [value, setUrl] = useState("");
+  
   const qrRef = useRef();
   const downloadQRCode = (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const addProduct = () => {
     document.body.removeChild(anchor);
     setUrl("");
   };
-  
+
 
   const qrcode = (
     <QRCodeCanvas
@@ -60,7 +61,8 @@ const addProduct = () => {
 
     try {
       console.log({productId})
-      const list = JSON.parse("[" + productId + "]");
+      const list = JSON.parse("[" + parseInt(productId, 36) + "]");
+      console.log(list)
 
       if (currentAccount && companyContractAddress && list) {
         setUpdateStatus("Validate the transaction through your wallet");
