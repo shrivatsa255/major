@@ -17,7 +17,7 @@ const QRScanner = () => {
     }
   };
   const videoConstraints = {
-  facingMode: "environment", // Set to "environment" to prefer the back camera
+  facingMode: "rear", // Set to "environment" to prefer the back camera
 };
 
 
