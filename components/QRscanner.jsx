@@ -1,10 +1,12 @@
 // components/QRScanner.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QrScanner from "react-qr-scanner";
 
 const QRScanner = () => {
   const [data, setData] = useState(null);
   const [scanning, setScanning] = useState(true);
+  const [availableCameras, setAvailableCameras] = useState([]);
+  const [selectedCamera, setSelectedCamera] = useState(null);
 
   const handleError = (error) => {
     console.error("QR Code Scanner Error:", error);
@@ -16,16 +18,55 @@ const QRScanner = () => {
       setScanning(false);
     }
   };
-  const videoConstraints = {
-  facingMode: "rear", // Set to "environment" to prefer the back camera
-};
 
+  const videoConstraints = {
+    facingMode: selectedCamera,
+  };
+
+  const getAvailableCameras = () => {
+    navigator.mediaDevices.enumerateDevices().then((devices) => {
+      const cameras = devices.filter((device) => device.kind === "videoinput");
+      setAvailableCameras(cameras);
+      if (cameras.length > 0) {
+        setSelectedCamera(cameras[0].deviceId);
+      }
+    });
+  };
+
+  useEffect(() => {
+    getAvailableCameras();
+  }, []);
+
+  const handleCameraChange = (event) => {
+    setSelectedCamera(event.target.value);
+    setScanning(true);
+  };
 
   return (
     <div className="rounded-md p-7 bg-nft-dark-3 dark:border-indigo-100 shadow-lg">
+      {availableCameras.length > 1 && (
+        <div className="mb-4">
+          <label htmlFor="cameraSelect" className="text-white">
+            Choose Camera:
+          </label>
+          <select
+            id="cameraSelect"
+            className="ml-2 p-2 border rounded-md"
+            value={selectedCamera}
+            onChange={handleCameraChange}
+          >
+            {availableCameras.map((camera) => (
+              <option key={camera.deviceId} value={camera.deviceId}>
+                {camera.label || `Camera ${camera.deviceId.slice(-1)}`}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       {scanning && (
         <QrScanner
-          facingMode={videoConstraints}
+          facingMode={selectedCamera}
           onScan={handleScan}
           onError={handleError}
           style={{ width: "100%" }}
