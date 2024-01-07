@@ -6,7 +6,7 @@ const QRScanner = () => {
   const [data, setData] = useState(null);
   const [scanning, setScanning] = useState(true);
   const [availableCameras, setAvailableCameras] = useState([]);
-  const [selectedCamera, setSelectedCamera] = useState(null);
+  const [selectedCamera, setSelectedCamera] = useState("environment"); // Default to back camera
 
   const handleError = (error) => {
     console.error("QR Code Scanner Error:", error);
@@ -19,17 +19,10 @@ const QRScanner = () => {
     }
   };
 
-  const videoConstraints = {
-    facingMode: selectedCamera,
-  };
-
   const getAvailableCameras = () => {
     navigator.mediaDevices.enumerateDevices().then((devices) => {
       const cameras = devices.filter((device) => device.kind === "videoinput");
       setAvailableCameras(cameras);
-      if (cameras.length > 0) {
-        setSelectedCamera(cameras[0].deviceId);
-      }
     });
   };
 
@@ -55,11 +48,8 @@ const QRScanner = () => {
             value={selectedCamera}
             onChange={handleCameraChange}
           >
-            {availableCameras.map((camera) => (
-              <option key={camera.deviceId} value={camera.deviceId}>
-                {camera.label || `Camera ${camera.deviceId.slice(-1)}`}
-              </option>
-            ))}
+            <option value="user">Front Camera</option>
+            <option value="environment">Back Camera</option>
           </select>
         </div>
       )}
