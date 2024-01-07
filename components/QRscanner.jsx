@@ -1,5 +1,5 @@
 // components/QRScanner.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import QrScanner from "react-qr-scanner";
 
 const QRScanner = () => {
@@ -7,8 +7,6 @@ const QRScanner = () => {
   const [scanning, setScanning] = useState(true);
   const [availableCameras, setAvailableCameras] = useState([]);
   const [selectedCamera, setSelectedCamera] = useState(null);
-
-  const videoRef = useRef();
 
   const handleError = (error) => {
     console.error("QR Code Scanner Error:", error);
@@ -34,33 +32,14 @@ const QRScanner = () => {
     }
   };
 
-  const handleCameraChange = (event) => {
-    setSelectedCamera(event.target.value);
-    setScanning(true);
-  };
-
   useEffect(() => {
     getAvailableCameras();
   }, []);
 
-  useEffect(() => {
-    if (selectedCamera && videoRef.current) {
-      // Stop the existing stream if any
-      videoRef.current.srcObject?.getTracks().forEach((track) => track.stop());
-
-      // Start a new stream with the selected camera
-      navigator.mediaDevices
-        .getUserMedia({
-          video: { deviceId: selectedCamera },
-        })
-        .then((stream) => {
-          videoRef.current.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error accessing camera:", error);
-        });
-    }
-  }, [selectedCamera]);
+  const handleCameraChange = (event) => {
+    setSelectedCamera(event.target.value);
+    setScanning(true);
+  };
 
   return (
     <div className="rounded-md p-7 bg-nft-dark-3 dark:border-indigo-100 shadow-lg">
@@ -86,11 +65,10 @@ const QRScanner = () => {
 
       {scanning && (
         <QrScanner
-          videoConstraints={{ facingMode: "environment" }} // Use the front camera by default
+          facingMode={selectedCamera ? "environment" : "user"}
           onScan={handleScan}
           onError={handleError}
           style={{ width: "100%" }}
-          ref={videoRef}
         />
       )}
       {data && !scanning && <p>{`Contract Address: ${data}`}</p>}
