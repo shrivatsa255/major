@@ -21,7 +21,7 @@ const QRScanner = () => {
     <div className="rounded-md p-7 bg-nft-dark-3 dark:border-indigo-100 shadow-lg">
       {scanning && (
         <QrScanner
-          facingMode="rear"
+          facingMode={"rear"}
           onScan={handleScan}
           onError={handleError}
           style={{ width: "100%" }}
