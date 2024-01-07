@@ -16,12 +16,16 @@ const QRScanner = () => {
       setScanning(false);
     }
   };
+  const videoConstraints = {
+  facingMode: "environment", // Set to "environment" to prefer the back camera
+};
+
 
   return (
     <div className="rounded-md p-7 bg-nft-dark-3 dark:border-indigo-100 shadow-lg">
       {scanning && (
         <QrScanner
-          facingMode="environment"
+          facingMode={videoConstraints}
           onScan={handleScan}
           onError={handleError}
           style={{ width: "100%" }}
