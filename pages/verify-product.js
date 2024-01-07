@@ -1,8 +1,7 @@
 import { useState, useRef } from "react";
-import QrScanner from "qr-scanner";
-
 import { InfoCard, Input, Button, QRscanner } from "../components";
 import Web3Modal from "web3modal";
+import QrScanner from "qr-scanner";
 import { ValidifyAddress, ValidifyAddressesABI } from "../Context/constents";
 import { ethers } from "ethers";
 
@@ -11,6 +10,7 @@ const verifyProduct = () => {
   const [productId, setProductId] = useState("");
 
   const [productStatus, setProductStatus] = useState(null);
+  const [startScan, setStartScan] = useState(false)
 
   const fetchContract = (signerOrProvider) =>
     new ethers.Contract(
@@ -96,10 +96,25 @@ const verifyProduct = () => {
             </p>
           </div>
           <div className="sm:w-full md:w-4/5  dark:bg-nft-black-3  bg-indigo-100 rounded-2xl text-center p-10 minlg:m-8 mt-5 cursor-pointer shadow-md lg:w-1/2">
-            <div className="font-poppins break-all font-semibold dark:text-white text-nft-black-1 text-md minlg:text-xl sm:text-md">
-              <QRscanner />
+          
+          <div className="font-poppins break-all font-semibold dark:text-white text-nft-black-1 text-md minlg:text-xl sm:text-md">
+          {!startScan && (
+          <div>
+             <p className="font-poppins font-semibold break-all dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-md">
+                To scan the QR press the below button
+            </p>
+            <Button
+              btnName="Scan QR"
+              classStyles="rounded-lg mt-5"
+              handleClick={() => setStartScan(true)}
+            />
             </div>
+            )}
+              {startScan && (<QRscanner />)}
+              
+
           </div>
+        </div>
           <div className="ml-4 sm:ml-0">
             <Input
               title="Contract Address"

@@ -10,15 +10,16 @@
 	},
 	"dependencies": {
 		"@nomiclabs/hardhat-waffle": "^2.0.0",
+		"@yudiel/react-qr-scanner": "^1.2.4",
 		"ethers": "^5.7.2",
 		"hardhat": "^2.9.0",
-		"html5-qrcode": "^2.3.8",
 		"next": "14.0.4",
 		"next-themes": "^0.2.1",
 		"qr-scanner": "^1.4.2",
 		"qrcode.react": "^3.1.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"react-qr-scanner": "^1.0.0-alpha.11",
 		"web3modal": "^1.9.12"
 	},
 	"devDependencies": {
