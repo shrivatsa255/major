@@ -1,38 +1,32 @@
 // components/QRScanner.js
-import React, { useEffect, useState } from "react";
-import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
+import React, { useState } from "react";
+import QrScanner from "react-qr-scanner"
 
 const QRScanner = () => {
   const [data, setData] = useState(null);
+  const [scanning, setScanning] = useState(true);
 
-  useEffect(() => {
-    const onScanSuccess = (decodedText, decodedResult) => {
-      // handle the scanned code as you like, for example:
-      setData(decodedText);
-      console.log(`Code matched = ${decodedText}`, decodedResult);
-      html5QrcodeScanner.clear();
-    };
+  const handleError = (error) => {
+    console.error("QR Code Scanner Error:", error);
+  };
 
-    let config = {
-      fps: 10,
-      qrbox: { width: 200, height: 200 },
-      rememberLastUsedCamera: false,
-      // Only support camera scan type.
-      supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-    };
-
-    let html5QrcodeScanner = new Html5QrcodeScanner(
-      "reader",
-      config,
-      /* verbose= */ false
-    
-    );
-    html5QrcodeScanner.render(onScanSuccess);
-  }, []);
+  const handleScan = (result) => {
+    if (result) {
+      setData(result.text);
+      setScanning(false);
+    }
+  };
 
   return (
-    <div id="reader">
-      {`Contract Address : ${data}`}
+    <div className="rounded-md p-7 bg-nft-dark-3 dark:border-indigo-100 shadow-lg">
+      {scanning && (
+        <QrScanner
+          onScan={handleScan}
+          onError={handleError}
+          style={{ width: "100%" }}
+        />
+      )}
+      {data && !scanning && <p>{`Contract Address: ${data}`}</p>}
     </div>
   );
 };
