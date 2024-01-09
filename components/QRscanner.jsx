@@ -67,7 +67,7 @@ const QRScanner = () => {
         <QrReader
           constraints={{
             audio: false,
-            video: { facingMode: "environment" },
+            video: { facingMode:selectedCamera },
           }}
           onScan={handleScan}
           onError={handleError}
