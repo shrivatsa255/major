@@ -1,6 +1,6 @@
 // components/QRScanner.js
 import React, { useState, useEffect } from "react";
-import  QrReader from 'react-qr-scanner';
+import QrReader from "react-qr-scanner";
 
 const QRScanner = () => {
   const [data, setData] = useState(null);
@@ -65,7 +65,10 @@ const QRScanner = () => {
 
       {scanning && (
         <QrReader
-          facingMode="rear"
+          constraints={{
+            audio: false,
+            video: { facingMode: "environment" },
+          }}
           onScan={handleScan}
           onError={handleError}
           style={{ width: "100%" }}
